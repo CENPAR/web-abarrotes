@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Súper Abarrotera Ramírez | Ofertas del Día</title>
+    <!-- Fuente de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === VARIABLES DE COLOR === */
+        :root {
+            --azul-ramirez: #003399;
+            --amarillo-ramirez: #FFC000;
+            --blanco: #FFFFFF;
+            --gris-fondo: #F4F6F9;
+            --texto-oscuro: #333333;
+        }
+
+        /* === ESTILOS GENERALES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-fondo);
+            color: var(--texto-oscuro);
+            padding-bottom: 90px; /* Para el botón flotante */
+        }
+
+        /* === BARRA DE URGENCIA === */
+        .barra-urgencia {
+            background-color: var(--azul-ramirez);
+            color: var(--amarillo-ramirez);
+            text-align: center;
+            padding: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* === HEADER Y LOGO === */
+        header {
+            background-color: var(--blanco);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-principal {
+            max-width: 250px;
+            height: auto;
+            width: 100%;
+        }
+
+        /* === SECCIÓN HERO === */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-ramirez) 0%, #001a4d 100%);
+            color: var(--blanco);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--amarillo-ramirez);
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span { color: var(--amarillo-ramirez); }
+
+        .hero p { font-size: 1rem; margin-bottom: 25px; font-weight: 400; }
+
+        /* BOTONES GENERALES */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            text-transform: uppercase;
+            border: none;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn:active { transform: scale(0.95); }
+
+        .btn-whatsapp {
+            background-color: var(--amarillo-ramirez);
+            color: var(--azul-ramirez);
+        }
+
+        /* === BARRA DE BENEFICIOS === */
+        .beneficios {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: var(--blanco);
+            padding: 20px 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .beneficio-item {
+            text-align: center;
+            width: 45%;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--azul-ramirez);
+        }
+
+        .beneficio-item span { display: block; font-size: 2rem; margin-bottom: 5px; }
+
+        /* === TÍTULOS DE SECCIÓN === */
+        .seccion-titulo {
+            text-align: center;
+            color: var(--azul-ramirez);
+            font-weight: 900;
+            font-size: 1.5rem;
+            margin: 30px 0 20px 0;
+            text-transform: uppercase;
+        }
+
+        .seccion-titulo::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--amarillo-ramirez);
+            margin: 10px auto 0 auto;
+        }
+
+        /* === CATEGORÍAS (Etiquetas de colores) === */
+        .categoria-titulo {
+            background-color: var(--azul-ramirez);
+            color: white;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0 auto 15px auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+        
+        .categoria-contenedor {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* === TARJETAS DE OFERTAS === */
+        .grid-ofertas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 0 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tarjeta-oferta {
+            background-color: var(--blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: border 0.3s;
+        }
+
+        .tarjeta-oferta:hover { border: 2px solid var(--amarillo-ramirez); }
+
+        .oferta-etiqueta {
+            background-color: #E63946;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 5px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .oferta-info { padding: 15px 10px; text-align: center; }
+
+        .oferta-info h3 { font-size: 0.9rem; color: var(--azul-ramirez); margin-bottom: 5px; height: 35px; }
+
+        .precio-anterior { font-size: 0.8rem; text-decoration: line-through; color: #888; display: block; }
+
+        .precio-actual { font-size: 1.3rem; font-weight: 900; color: var(--azul-ramirez); display: block; margin-bottom: 10px; }
+
+        .btn-pequeno {
+            display: inline-block;
+            background-color: var(--azul-ramirez);
+            color: var(--blanco);
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* === SECCIÓN REDES Y QR === */
+        .seccion-redes {
+            background-color: var(--blanco);
+            padding: 30px 15px;
+            margin-top: 40px;
+            text-align: center;
+            border-top: 5px solid var(--azul-ramirez);
+        }
+
+        .seccion-redes p { font-size: 0.9rem; margin-bottom: 20px; color: #555; }
+
+        .contenedor-qrs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .qr-item {
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .qr-item img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid var(--gris-fondo);
+            margin-bottom: 10px;
+        }
+
+        /* BOTONES DE REDES */
+        .btn-red {
+            display: block;
+            width: 100%;
+            padding: 8px 0;
+            color: white;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        .btn-red-wa { background-color: #25D366; }
+        .btn-red-fb { background-color: #1877F2; }
+        .btn-red-tk { background-color: #000000; }
+
+        /* === BOTÓN MAPA (ESTILO 3D) === */
+        .seccion-mapa { padding: 20px; text-align: center; }
+        
+        .btn-mapa {
+            background-color: var(--amarillo-ramirez);
+            color: var(--azul-ramirez);
+            font-size: 1.3rem;
+            border: 3px solid var(--azul-ramirez);
+            box-shadow: 0 6px 0 var(--azul-ramirez);
+        }
+        .btn-mapa:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 var(--azul-ramirez);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--azul-ramirez);
+            color: var(--blanco);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.8rem;
+        }
+
+        footer strong { color: var(--amarillo-ramirez); font-size: 1rem; display: block; margin-bottom: 10px; }
+
+        /* === BOTÓN FLOTANTE WHATSAPP === */
+        .btn-flotante {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background-color: #25D366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Ajustes para PC */
+        @media (min-width: 600px) {
+            .grid-ofertas { grid-template-columns: repeat(4, 1fr); max-width: 1000px; }
+            .hero h1 { font-size: 3rem; }
+            .btn { max-width: 400px; margin: 0 auto 15px auto; }
+            .qr-item { width: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="barra-urgencia">
+        🔥 Ofertas actualizadas todos los días 🔥
+    </div>
+
+    <header>
+        <img src="imagen-logo.png" alt="Súper Abarrotera Ramírez" class="logo-principal">
+    </header>
+
+    <section class="hero">
+        <h1>Deja de pagar de más.<br><span>Ahorra en grande.</span></h1>
+        <p>Únete a nuestro grupo y recibe las ofertas del día directo en tu celular.</p>
+        
+        <!-- ENLACE WHATSAPP -->
+        <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn btn-whatsapp">
+            📲 Únete al Grupo VIP
+        </a>
+    </section>
+
+    <div class="beneficios">
+        <div class="beneficio-item"><span>💸</span> Precios Bajos</div>
+        <div class="beneficio-item"><span>🛒</span> Surtido Completo</div>
+        <div class="beneficio-item"><span>🚚</span> Envío a Domicilio</div>
+        <div class="beneficio-item"><span>🤝</span> Buen Trato</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 1: ABARROTES (LAS 4 OFERTAS BASE)  -->
+    <!-- ========================================== -->
+    <div class="categoria-contenedor">
+        <div class="categoria-titulo">🛒 Abarrotes y Despensa</div>
+    </div>
+
+    <div class="grid-ofertas">
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Solo Hoy</div>
+            <div class="oferta-info">
+                <h3>Aceite Vegetal 1L</h3>
+                <span class="precio-anterior">$35.00</span>
+                <span class="precio-actual">$28.50</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Oferta</div>
+            <div class="oferta-info">
+                <h3>Arroz 1kg</h3>
+                <span class="precio-anterior">$25.00</span>
+                <span class="precio-actual">$19.90</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Combo</div>
+            <div class="oferta-info">
+                <h3>Café + Azúcar</h3>
+                <span class="precio-anterior">$60.00</span>
+                <span class="precio-actual">$49.00</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Últimas</div>
+            <div class="oferta-info">
+                <h3>Huevo 12 pzas</h3>
+                <span class="precio-anterior">$42.00</span>
+                <span class="precio-actual">$36.00</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 2: FRUTERÍA Y VERDULERÍA           -->
+    <!-- ========================================== -->
+    <div class="categoria-contenedor">
+        <div class="categoria-titulo">🍅 Frutas y Verduras</div>
+    </div>
+
+    <div class="grid-ofertas">
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Fresco Hoy</div>
+            <div class="oferta-info">
+                <h3>Jitomate Saladet</h3>
+                <span class="precio-anterior">$35.00 kg</span>
+                <span class="precio-actual">$32.90 kg</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Oferta</div>
+            <div class="oferta-info">
+                <h3>Cebolla Blanca</h3>
+                <span class="precio-anterior">$26.00 kg</span>
+                <span class="precio-actual">$23.30 kg</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Semana</div>
+            <div class="oferta-info">
+                <h3>Papa Blanca</h3>
+                <span class="precio-anterior">$25.00 kg</span>
+                <span class="precio-actual">$22.80 kg</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Promo</div>
+            <div class="oferta-info">
+                <h3>Plátano</h3>
+                <span class="precio-anterior">$19.00 kg</span>
+                <span class="precio-actual">$17.10 kg</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECCIÓN 3: CHILES Y ESPECIAS               -->
+    <!-- ========================================== -->
+    <div class="categoria-contenedor">
+        <div class="categoria-titulo">🌶️ Chiles Secos</div>
+    </div>
+
+    <div class="grid-ofertas">
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Oferta</div>
+            <div class="oferta-info">
+                <h3>Chile Ancho Rojo</h3>
+                <span class="precio-anterior">$210.00 kg</span>
+                <span class="precio-actual">$191.96 kg</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Solo Hoy</div>
+            <div class="oferta-info">
+                <h3>Chile Guajillo</h3>
+                <span class="precio-anterior">$195.00 kg</span>
+                <span class="precio-actual">$180.81 kg</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+        <div class="tarjeta-oferta">
+            <div class="oferta-etiqueta">Últimas</div>
+            <div class="oferta-info">
+                <h3>Chile de Árbol</h3>
+                <span class="precio-anterior">$220.00 kg</span>
+                <span class="precio-actual">$206.05 kg</span>
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-pequeno">Lo quiero</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN REDES SOCIALES CON BOTONES -->
+    <section class="seccion-redes">
+        <h2 class="seccion-titulo">Síguenos y Ahorra</h2>
+        <p>Escanea los códigos o presiona el botón para entrar directo.</p>
+        
+        <div class="contenedor-qrs">
+            <!-- WHATSAPP -->
+            <div class="qr-item">
+                <img src="qr-whatsapp.png" alt="QR WhatsApp">
+                <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-red btn-red-wa">Entrar</a>
+            </div>
+            
+            <!-- FACEBOOK -->
+            <div class="qr-item">
+                <img src="qr-facebook.png" alt="QR Facebook">
+                <a href="https://www.facebook.com/profile.php?id=61558388799336" target="_blank" class="btn-red btn-red-fb">Entrar</a>
+            </div>
+
+            <!-- TIKTOK -->
+            <div class="qr-item">
+                <img src="qr-tiktok.png" alt="QR TikTok">
+                <a href="https://www.tiktok.com/@super.abarrotera?_r=1&_t=ZS-9Aui2piS8f6" target="_blank" class="btn-red btn-red-tk">Entrar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTÓN MAPA -->
+    <div class="seccion-mapa">
+        <a href="https://maps.app.goo.gl/dsVMHkJSKmAetYPr7" target="_blank" class="btn btn-mapa">
+            📍 IR A UBICACIÓN
+        </a>
+    </div>
+
+    <footer>
+        <strong>SÚPER ABARROTERA RAMÍREZ</strong>
+        <p>Precios bajos todos los días, ofertas que sí se sienten.</p>
+        <p style="margin-top: 10px; font-size: 0.7rem; opacity: 0.7;">© 2024 - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE (WHATSAPP) -->
+    <a href="https://chat.whatsapp.com/LsnJHeaQvAeK5ag6moCJhd?s=cl&p=i&mlu=4&ilr=4&iam=2" class="btn-flotante">
+        <span>💬</span> Entrar al Grupo de Ofertas
+    </a>
+
+</body>
+</html>
